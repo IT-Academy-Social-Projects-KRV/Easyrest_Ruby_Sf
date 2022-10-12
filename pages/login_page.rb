@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../spec/spec_helper'
-
 # This class is for login page
 class LoginPage
   SIGN_IN_BTN = { css: "[href*='/log-in']" }.freeze

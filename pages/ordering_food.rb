@@ -12,7 +12,7 @@ class OrderingFood < RestaurantList
   CHANGE_QUANTITY = { xpath: '//*[@id="quantity"]' }.freeze
   REMOVE_ITEM = { css: "[aria-label='Remove item']" }.freeze
   REMOVE_ITEM_FROM_ORD_CONFM = { xpath: '//div[2]/div[2]/div/div[2]/div[2]/table/tbody/tr[1]/td[1]/button' }.freeze
-  CHANGE_QUANTITY_ORD_CONFM = { xpath: '//div[2]/div[2]/div/div[2]/div[2]/table/tbody/tr[1]/td[5]/div/div/input' }.freeze
+  CHANGE_QUANTITY_ORD_CONFM = { xpath: '/html/body/div[2]/div[2]/div/div[2]/div[2]/table/tbody/tr[1]/td[5]/div/div/input' }.freeze
   CANCEL_BTN = { xpath: '/html/body/div[2]/div[2]/div/div[3]/button[1]' }.freeze
   SUBMIT_BTN = { xpath: '//div[2]/div[2]/div/div[3]/button[2]/span[1]' }.freeze
 
@@ -51,6 +51,8 @@ class OrderingFood < RestaurantList
   end
 
   def remove_item
+    hover = @driver.find_element(xpath: '/html/body/div/main/div[2]/div[3]/div/div/div/div[1]')
+    @driver.action.move_to(hover).perform
     @driver.find_element(REMOVE_ITEM).click
   end
 

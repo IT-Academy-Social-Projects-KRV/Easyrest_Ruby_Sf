@@ -6,6 +6,10 @@ require_relative '../spec/spec_helper'
 RSpec.describe RestaurantList do
   let(:list) { described_class.new(@driver) }
 
+  before(:each) do
+    @driver.manage.timeouts.implicit_wait = 10
+  end
+
   it 'Verify that fast food button works.' do
     list.click_restaurants_list
     list.click_fast_foot

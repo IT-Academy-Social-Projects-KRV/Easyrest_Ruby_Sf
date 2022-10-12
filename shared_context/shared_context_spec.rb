@@ -11,7 +11,7 @@ RSpec.shared_context 'login' do
     login.type_email(user)
     login.type_password(pw)
     login.click_submit
-    sleep(2)
+    @wait.until { @driver.find_element(css: '[style*="padding"]').displayed? }
     expect(@driver.find_element(css: '[style*="padding"]')).to be_displayed
   end
 end

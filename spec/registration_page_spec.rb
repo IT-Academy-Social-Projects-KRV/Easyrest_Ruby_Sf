@@ -22,7 +22,7 @@ RSpec.describe RegistrationPage do
     guest.type_password(cred_reg.fetch('test_guest')['guest_pw'])
     guest.type_pass_confrirm(cred_reg.fetch('test_guest')['guest_confirm_pw'])
     guest.click_create_acc
-    @wait.until { @driver.find_element(xpath: "//button[@type='submit']").displayed? }
+    @wait.until { @driver.find_element(xpath: '/html/body/div/main/div/div[1]/div/span/h5').displayed? }
     url = @driver.current_url
     expect(url).to eq('http://127.0.0.1:8880/log-in')
   end
@@ -30,7 +30,7 @@ RSpec.describe RegistrationPage do
   it 'Can log in with new user.' do
     guest.type_email(cred_reg.fetch('emails')['new_email'])
     guest.type_password(cred_reg.fetch('pw')['new_pwd'])
-    @wait.until { @driver.find_element(xpath: "//button[@type='submit']") }
+    @wait.until { @driver.find_element(xpath: "//button[@type='submit']").displayed? }
     guest.click_submit
     @wait.until { @driver.find_element(css: '[style*="padding"]') }
     expect(@driver.find_element(css: '[style*="padding"]')).to be_displayed

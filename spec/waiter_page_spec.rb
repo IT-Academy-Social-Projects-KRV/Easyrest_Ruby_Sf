@@ -14,22 +14,25 @@ RSpec.describe WaiterPage do
 
   it 'can click all button' do
     waiter.click_all_btn
-    @wait.until { @driver.find_element(xpath: "//span[contains(text(),'All (19)')]") }
-    expect(@driver.find_element(xpath: "//span[contains(text(),'All (19)')]").text).to eq('ALL (19)')
+    @wait.until { @driver.find_element(xpath: '/html/body/div/main/div/div[4]/div/div') }
+    expect(@driver.find_element(xpath: '/html/body/div/main/div/div[4]/div/div')).to be_displayed
   end
 
-  xit 'can test start button' do
+  it 'can test start button' do
     waiter.click_start_btn
-    expect(@driver.find_element(css: "//p[@class='MuiTypography-root-41 MuiTypography-body2-49 MuiTypography-colorInherit-70 MuiTypography-alignCenter-64']")).to be_displayed
+    @wait.until { @driver.find_element(xpath: "//div[@role='alertdialog']").displayed? }
+    expect(@driver.find_element(xpath: "//div[@role='alertdialog']").text).to eq('success')
   end
 
   it 'can test close button' do
     waiter.click_close_btn
-    expect(@driver.find_element(css: "//p[@class='MuiTypography-root-41 MuiTypography-body2-49 MuiTypography-colorInherit-70 MuiTypography-alignCenter-64']")).to be_displayed
+    @wait.until { @driver.find_element(xpath: "//div[@role='alertdialog']").displayed? }
+    expect(@driver.find_element(xpath: "//div[@role='alertdialog']").text).to eq('success')
   end
 
   it 'can test history tab' do
     waiter.click_history_btn
-    expect(@driver.find_element(xpath: "//span[contains(text(),'History (13)')]").text).to eq('HISTORY (13)')
+    @wait.until { @driver.find_element(xpath: '/html/body/div/main/div/div[5]/div/div').displayed? }
+    expect(@driver.find_element(xpath: '/html/body/div/main/div/div[5]/div/div')).to be_displayed
   end
 end

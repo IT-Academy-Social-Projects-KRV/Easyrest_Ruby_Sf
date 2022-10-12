@@ -8,7 +8,7 @@ require:
   - rubocop-performance
 
 RSpec/HookArgument:
-  EnforcedStyle: implicit
+  Enabled: false
 
 RSpec/ExampleLength:
   Enabled: false
@@ -47,6 +47,9 @@ Naming/ConstantName:
   Enabled: false
 
 Style/ColonMethodCall:
+  Enabled: false
+
+RSpec/BeforeAfterAll:
   Enabled: false
 
 Style/HashSyntax:

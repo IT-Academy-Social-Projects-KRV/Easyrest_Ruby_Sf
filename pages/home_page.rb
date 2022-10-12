@@ -9,9 +9,9 @@ class HomePage < LoginPage
   SIGN_UP_BTN = { css: "[href*='/sign-up']" }.freeze
   RESTAURANTS_LIST_BTN = { css: "[href*='/restaurants']" }.freeze
 
-  category_name = ['vegeterian', 'sushi', 'fast food', 'pub', 'pizza', 'kebab', 'greel', 'beer', 'burger', 'ukranian cuisine', 'japanese cuisine']
+  category_name = ['vegeterian', 'sushi', 'fast food', 'pub', 'pizza', 'kebab', 'beer', 'ukrainian cuisine']
 
-  VIEW_CATEGORY = { xpath: "//span[contains(@class 'MuiTopography-root-41')][contains(., \"#{category_name.sample}\")]" }.freeze
+  VIEW_CATEGORY = { xpath: "//h6[normalize-space()='#{category_name.sample}']" }.freeze
   EASY_REST_BTN = { xpath: '/html/body/div/header/div/a' }.freeze
 
   def initialize(driver)

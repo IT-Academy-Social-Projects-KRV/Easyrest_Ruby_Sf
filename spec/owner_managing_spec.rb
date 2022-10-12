@@ -16,9 +16,11 @@ RSpec.describe OwnerManaging do
   it 'Can archive and unarchive a restaurant.' do
     owner.click_three_dot_btn
     owner.click_archive_unarchive_btn
+    @wait.until { @driver.find_element(xpath: "//span[normalize-space()='ARCHIVED']").displayed? }
     expect(@driver.find_element(xpath: "//span[normalize-space()='ARCHIVED']").text).to eq('ARCHIVED')
     owner.click_three_dot_btn
     owner.click_archive_unarchive_btn
+    @wait.until { @driver.find_element(xpath: "//span[normalize-space()='NOT APPROVED']").displayed? }
     expect(@driver.find_element(xpath: "//span[normalize-space()='NOT APPROVED']").text).to eq('NOT APPROVED')
   end
 
@@ -76,7 +78,7 @@ RSpec.describe OwnerManaging do
 
   it 'Can delete a administrator.' do
     owner.click_delete_administrator_btn
-    @wait.until { @driver.find_element(xpath: "//span[contains(@class, 'MuiButton-label')][contains(., 'Add')]").displayed? }
+    @wait.until { @driver.find_element(xpath: '//div/div/main/div[1]').displayed? }
     expect(@driver.find_element(xpath: '//div/div/main/div[1]').text).not_to include(cred_reg.fetch('test_administrator')['administrator_name'])
   end
 end

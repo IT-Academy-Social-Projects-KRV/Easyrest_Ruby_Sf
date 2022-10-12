@@ -2,7 +2,7 @@
 
 # This class OwnerManaging is for owner managin page.
 class OwnerManaging
-  THREE_DOT_BTN = { xpath: '//div/main/div/div/div/div[1]/div[1]/div[2]/div/div[2]/div/div[1]/button/span[1]' }.freeze
+  THREE_DOT_BTN = { xpath: '/html/body/div/main/div/div/div/div[1]/div[1]/div[2]/div/div[2]/div/div[1]/button' }.freeze
   ARCHIVE_UNARCHIVE_BTN = { xpath: '//div[2]/div[2]/ul/li/div[2]/span' }.freeze
   MANAGE_BTN = { xpath: '//div[2]/div[2]/ul/a/div[2]/span' }.freeze
   EDIT_REST_BTN = { xpath: '//div/div/main/div[2]/button' }.freeze

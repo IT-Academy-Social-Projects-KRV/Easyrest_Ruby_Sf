@@ -2,7 +2,6 @@
 
 require_relative '../shared_context/shared_context_spec'
 require_relative '../pages/owner_page'
-require_relative '../config/config'
 require 'pg'
 include Test::Unit::Assertions
 
@@ -33,13 +32,13 @@ RSpec.describe Owner do
     assert_equal('HISTORY (0)', @driver.find_element(css: "[href*='/profile/order_history/History']").text, 'Not found.')
   end
 
-  it 'Verify redirection to my restsaurants page' do
+  xit 'Verify redirection to my restsaurants page' do
     owner.click_my_restaurants_btn
     @wait.until { @driver.find_element(css: "[href*='/restaurant/4/menu/7']") }
     assert(@driver.find_element(css: "[href*='/restaurant/4/menu/7']"), 'Label not found.')
   end
 
-  it 'Create new restaurant' do
+  xit 'Create new restaurant' do
     owner.click_add_restaurant_btn
     owner.type_rest_name(cred.fetch('test_rest')['rest_name'])
     owner.type_rest_address(cred.fetch('test_rest')['rest_address'])
