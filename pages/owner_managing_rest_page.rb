@@ -2,29 +2,29 @@
 
 # This class OwnerManaging is for owner managin page.
 class OwnerManaging
-  THREE_DOT_BTN = { xpath: '/html/body/div/main/div/div/div/div[1]/div[1]/div[2]/div/div[2]/div/div[1]/button' }.freeze
+  THREE_DOT_BTN = { xpath: '//div[1]/div[1]/div[2]/div/div[2]/div/div[1]/button' }.freeze
   ARCHIVE_UNARCHIVE_BTN = { xpath: '//div[2]/div[2]/ul/li/div[2]/span' }.freeze
   MANAGE_BTN = { xpath: '//div[2]/div[2]/ul/a/div[2]/span' }.freeze
   EDIT_REST_BTN = { xpath: '//div/div/main/div[2]/button' }.freeze
   EDIT_REST_NAME_FLD = { xpath: "//input[@name='name']" }.freeze
-  EDIT_REST_ADDRESS_FLD = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[2]/div/div/input' }.freeze
-  EDIT_REST_PHONE_FLD = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[3]/div/div/input' }.freeze
-  EDIT_REST_PREVIEW_TXT_FLD = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[4]/div/div/textarea' }.freeze
+  EDIT_REST_ADDRESS_FLD = { xpath: "//input[@name='address']" }.freeze
+  EDIT_REST_PHONE_FLD = { xpath: "//input[@name='phone']" }.freeze
+  EDIT_REST_PREVIEW_TXT_FLD = { xpath: "//textarea[@name='description']" }.freeze
   EDIT_REST_TAG_BTN = { xpath: '//*[@id="select-tags"]' }.freeze
-  EDIT_REST_DESCRIPTION_FLD = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[6]/div/div[2]/div/div/div/div/div' }.freeze
-  EDIT_HEADING_BTN = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[6]/div/div[1]/div[1]/button[1]' }.freeze
-  EDIT_BLOCKQUOTE_BTN = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[6]/div/div[1]/div[1]/button[2]' }.freeze
-  EDIT_UL_BTN = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[6]/div/div[1]/div[1]/button[3]' }.freeze
-  EDIT_OL_BTN = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[6]/div/div[1]/div[1]/button[4]' }.freeze
-  EDIT_BOLD_BTN = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[6]/div/div[1]/div[2]/button[1]' }.freeze
-  EDIT_ITALIC_BTN = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[6]/div/div[1]/div[2]/button[2]' }.freeze
-  EDIT_UNDERLINE_BTN = { xpath: '//div[3]/div/div/div/div[2]/form/div/div[6]/div/div[1]/div[2]/button[3]' }.freeze
+  EDIT_REST_DESCRIPTION_FLD = { xpath: "//div[contains(@role, 'textbox')]" }.freeze
+  EDIT_HEADING_BTN = { xpath: "//button[contains(@title, 'Heading')]" }.freeze
+  EDIT_BLOCKQUOTE_BTN = { xpath: "//button[contains(@title, 'Blockquote')]" }.freeze
+  EDIT_UL_BTN = { xpath: "//button[contains(@title, 'UL')]" }.freeze
+  EDIT_OL_BTN = { xpath: "//button[contains(@title, 'OL')]" }.freeze
+  EDIT_BOLD_BTN = { xpath: "//button[contains(@title, 'Bold')]" }.freeze
+  EDIT_ITALIC_BTN = { xpath: "//button[contains(@title, 'Italic')]" }.freeze
+  EDIT_UNDERLINE_BTN = { xpath: "//button[contains(@title, 'Underline')]" }.freeze
   EDIT_UPDATE_BTN = { xpath: "//span[contains(@class, 'MuiButton-label')][contains(., 'Update')]" }.freeze
-  EDIT_CANCEL_BTN = { xpath: '//div/div/main/div[3]/div/div/div/div[2]/form/div/div[8]/button/span[1]' }.freeze
+  EDIT_CANCEL_BTN = { xpath: "//span[contains(@class, 'MuiButton-label')][contains(., 'Cancel')]" }.freeze
   DETAILS_BTN = { xpath: '//div/div/div/div/ul/a[1]/div[2]/span' }.freeze
-  MENUES_BTN = { xpath: '//div/div/div/div/ul/div/div[2]/span' }.freeze
-  WAITERS_BTN = { xpath: '//div/div/div/div/ul/a[2]/div[2]/span' }.freeze
-  ADMINISTRATORS_BTN = { xpath: '//div/div/div/div/ul/a[3]/div[2]/span' }.freeze
+  MENUES_BTN = { xpath: "//span[contains(@class, 'MuiTypography-root')][contains(., 'Menues')]" }.freeze
+  WAITERS_BTN = { xpath: "//span[contains(@class, 'MuiTypography-root')][contains(., 'Waiters')]" }.freeze
+  ADMINISTRATORS_BTN = { xpath: "//span[contains(@class, 'MuiTypography-root')][contains(., 'Administrators')]" }.freeze
   DELETE_WAITER_BTN = { xpath: '//div/div/main/div[1]/ul/li[3]/button' }.freeze
   ADD_WAITER_BTN = { xpath: "//button[contains(@title, 'Add Waiter')]" }.freeze
   WAITER_NAME_FLD = { xpath: '//div/div/main/div[3]/div/div/div/div[2]/form/div/div[1]/div/div/input' }.freeze
@@ -32,18 +32,43 @@ class OwnerManaging
   WAITER_PASSWORD_FLD = { xpath: '//div/div/main/div[3]/div/div/div/div[2]/form/div/div[3]/div/div/input' }.freeze
   WAITER_PHONE_FLD = { xpath: '//div/div/main/div[3]/div/div/div/div[2]/form/div/div[4]/div/div/input' }.freeze
   ADD_WAITER_MENU_BTN = { xpath: "//span[contains(@class, 'MuiButton-label')][contains(., 'Add')]" }.freeze
-  CANCEL_WAITER_BTN = { xpath: '//div/div/main/div[3]/div/div/div/div[2]/form/div/div[6]/button/span[1]' }.freeze
+  CANCEL_WAITER_BTN = { xpath: "//span[normalize-space()='Cancel']" }.freeze
   DELETE_ADMINISTRATOR_BTN = { xpath: '//div/div/main/div[1]/ul/li/button' }.freeze
   ADD_ADMINISTRATOR_BTN = { xpath: "//button[contains(@title, 'Add Administrator')]" }.freeze
   ADMINISTRATOR_NAME_FLD = { name: 'name' }.freeze
   ADMINISTRATOR_EMAIL_FLD = { name: 'email' }.freeze
   ADMINISTRATOR_PASSWORD_FLD = { name: 'password' }.freeze
   ADMINISTRATOR_PHONE_FLD = { name: 'phone_number' }.freeze
-  ADD_ADMINISTRATOR_MENU_BTN = { xpath: '//div/div/main/div[3]/div/div/div/div[2]/form/div/div[7]/button/span[1]' }.freeze
+  ADD_ADMINISTRATOR_MENU_BTN = { xpath: "//span[normalize-space()='Add']" }.freeze
   CANCEL_ADMINISTRATOR_BTN = { xpath: '//div/div/main/div[3]/div/div/div/div[2]/form/div/div[6]/button/span[1]' }.freeze
+  ARCHIVED_REST = { xpath: "//span[normalize-space()='ARCHIVED']" }.freeze
+  ACTIVE_REST = { xpath: "//span[normalize-space()='ACTIVE']" }.freeze
+  NOT_APPROVED_REST = { xpath: "//span[normalize-space()='NOT APPROVED']" }.freeze
+  SNACKBAR = { xpath: "//span[contains(@id, 'client-snackbar')]" }.freeze
+  ADD_BTN = { xpath: "//span[contains(@class, 'MuiButton-label')][contains(., 'Add')]" }.freeze
 
   def initialize(driver)
     @driver = driver
+  end
+
+  def archived_txt
+    @driver.find_element(ARCHIVED_REST)
+  end
+
+  def active_txt
+    @driver.find_element(ACTIVE_REST)
+  end
+
+  def not_approved_txt
+    @driver.find_element(NOT_APPROVED_REST)
+  end
+
+  def snackbar_msg
+    @driver.find_element(SNACKBAR)
+  end
+
+  def add_btn
+    @driver.find_element(ADD_BTN)
   end
 
   def delete_value

@@ -12,16 +12,18 @@ RSpec.describe OwnerManaging do
   let(:pw) { cred_reg.fetch('pw')['owner_pwd'] }
 
   include_context 'login'
+  success_rest_msg = 'Restaurant was successfully updated'
+  success_usr_msg = 'User successfully added'
 
   it 'Can archive and unarchive a restaurant.' do
     owner.click_three_dot_btn
     owner.click_archive_unarchive_btn
-    @wait.until { @driver.find_element(xpath: "//span[normalize-space()='ARCHIVED']").displayed? }
-    expect(@driver.find_element(xpath: "//span[normalize-space()='ARCHIVED']").text).to eq('ARCHIVED')
+    @wait.until { owner.archived_txt.displayed? }
+    expect(owner.archived_txt.text).to eq('ARCHIVED')
     owner.click_three_dot_btn
     owner.click_archive_unarchive_btn
-    @wait.until { @driver.find_element(xpath: "//span[normalize-space()='NOT APPROVED']").displayed? }
-    expect(@driver.find_element(xpath: "//span[normalize-space()='NOT APPROVED']").text).to eq('NOT APPROVED')
+    @wait.until { owner.not_approved_txt.displayed? }
+    expect(owner.not_approved_txt.text).to eq('NOT APPROVED')
   end
 
   it 'Can manage a restaurant.' do
@@ -38,27 +40,27 @@ RSpec.describe OwnerManaging do
     owner.edit_click_blockquote_btn
     owner.edit_click_ol_btn
     owner.edit_click_update_btn
-    @wait.until { @driver.find_element(xpath: '/html/body/div/div/main/div[4]/div').displayed? }
-    expect(@driver.find_element(xpath: "//span[contains(@id, 'client-snackbar')]").text).to eq('Restaurant was successfully updated')
+    @wait.until { owner.snackbar_msg.displayed? }
+    expect(owner.snackbar_msg.text).to eq(success_rest_msg)
   end
 
   it 'Can add a waiter.' do
     owner.click_waiters_btn
     owner.click_add_waiter_btn
-    @wait.until { @driver.find_element(xpath: '/html/body/div/div/main/div[3]/div/div/div/div[2]/form/div/div[1]/div/div/input').displayed? }
+    @wait.until { @driver.find_element(xpath: "//input[@name='name']").displayed? }
     owner.type_waiter_name(cred_reg.fetch('test_waiter')['waiter_name'])
     owner.type_waiter_email(cred_reg.fetch('test_waiter')['waiter_email'])
     owner.type_waiter_password(cred_reg.fetch('test_waiter')['waiter_pw'])
     owner.type_waiter_phone(cred_reg.fetch('test_waiter')['witer_phone'])
-    @wait.until { @driver.find_element(xpath: "//span[contains(@class, 'MuiButton-label')][contains(., 'Add')]").displayed? }
+    @wait.until { owner.add_btn.displayed? }
     owner.click_add_waiter_menu_btn
-    @wait.until { @driver.find_element(xpath: '/html/body/div/div/main/div[4]/div').displayed? }
-    expect(@driver.find_element(xpath: "//span[contains(@id, 'client-snackbar')]").text).to eq('User successfully added')
+    @wait.until { owner.snackbar_msg.displayed? }
+    expect(owner.snackbar_msg.text).to eq(success_usr_msg)
   end
 
   it 'Can delete a waiter.' do
     owner.click_delete_waiter_btn
-    @wait.until { @driver.find_element(xpath: "//span[contains(@class, 'MuiButton-label')][contains(., 'Add')]").displayed? }
+    @wait.until { owner.add_btn.displayed? }
     expect(@driver.find_element(xpath: '//div/div/main/div[1]').text).not_to include(cred_reg.fetch('test_waiter')['waiter_name'])
   end
 
@@ -70,10 +72,10 @@ RSpec.describe OwnerManaging do
     owner.type_administrator_email(cred_reg.fetch('test_administrator')['administrator_email'])
     owner.type_administrator_password(cred_reg.fetch('test_administrator')['administrator_pw'])
     owner.type_administrator_phone(cred_reg.fetch('test_administrator')['administrator_phone'])
-    @wait.until { @driver.find_element(xpath: "//span[contains(@class, 'MuiButton-label')][contains(., 'Add')]").displayed? }
+    @wait.until { owner.add_btn.displayed? }
     owner.click_add_administrator_menu_btn
-    @wait.until { @driver.find_element(xpath: '/html/body/div/div/main/div[4]/div').displayed? }
-    expect(@driver.find_element(xpath: "//span[contains(@id, 'client-snackbar')]").text).to eq('User successfully added')
+    @wait.until { owner.snackbar_msg.displayed? }
+    expect(owner.snackbar_msg.text).to eq(success_usr_msg)
   end
 
   it 'Can delete a administrator.' do
